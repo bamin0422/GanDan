@@ -3,8 +3,8 @@
     package="h2mud2.ganpanproject.gandan">
 
     <application
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".activity.SplashActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/GanDanTheme">
+        <activity android:name=".activity.SplashActivity" android:theme="@style/GanDanTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
