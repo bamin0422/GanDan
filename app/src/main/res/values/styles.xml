@@ -5,10 +5,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
+        <item name="android:searchViewStyle">@style/customSearchViewStyle</item>
         <item name="android:buttonStyle">@style/customButtonFontStyle</item>
         <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
         <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
+    </style>
+
+    <style name="customSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:fontFamily">@font/font</item>
     </style>
 
     <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
