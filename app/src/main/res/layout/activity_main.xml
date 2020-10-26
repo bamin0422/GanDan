@@ -8,9 +8,12 @@
     android:background="#FFFFFF">
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/appViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/appViewPager"/>
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationMenu"
+        tools:layout_editor_absoluteX="-32dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationMenu"
