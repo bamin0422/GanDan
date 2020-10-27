@@ -39,6 +39,7 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="match_parent"
+                android:background="@drawable/designitemimg"
                 android:layout_height="200dp" />
 
             <androidx.recyclerview.widget.RecyclerView
