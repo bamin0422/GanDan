@@ -43,7 +43,9 @@ class MenuAdapter(val context: Context, val menuL: MutableList<Banner>, val item
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder?.bind(menuL[position], context)
+
     }
+
 
 }
 
