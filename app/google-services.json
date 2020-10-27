@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "550031867456",
+    "firebase_url": "https://gandan-4b2ce.firebaseio.com",
+    "project_id": "gandan-4b2ce",
+    "storage_bucket": "gandan-4b2ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550031867456:android:4930128af48e971781a9a5",
+        "android_client_info": {
+          "package_name": "h2mud2.ganpanproject.gandan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550031867456-l9pf0blafrkh3h7f90q2iflf83h9ij84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADB3MN6JDbhvRbWwc9hLUTuf6qsnnIv9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550031867456-l9pf0blafrkh3h7f90q2iflf83h9ij84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
