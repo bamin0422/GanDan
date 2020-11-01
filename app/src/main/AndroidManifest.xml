@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="h2mud2.ganpanproject.gandan">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:usesCleartextTraffic="true"
         android:theme="@style/GanDanTheme">
         <activity android:name=".activity.SplashActivity" android:theme="@style/GanDanTheme">
             <intent-filter>

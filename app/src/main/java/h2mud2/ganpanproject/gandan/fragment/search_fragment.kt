@@ -12,7 +12,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import h2mud2.ganpanproject.gandan.R
+import h2mud2.ganpanproject.gandan.activity.item.BannerActivity
+import h2mud2.ganpanproject.gandan.activity.item.DesignItemActivity
+import h2mud2.ganpanproject.gandan.activity.item.HangingActivity
+import h2mud2.ganpanproject.gandan.activity.item.SteelBannerActivity
 import h2mud2.ganpanproject.gandan.adapter.Banner
+import java.util.*
 
 class search_fragment: Fragment() {
 
@@ -36,19 +41,31 @@ class search_fragment: Fragment() {
         designItem_btn = view.findViewById<Button>(R.id.designItem)
 
         banner_btn.setOnClickListener{
-            Toast.makeText(view.context, "배너가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+            activity?.let{
+                var intent = Intent(view.context, BannerActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         steelBanner_btn.setOnClickListener{
-            Toast.makeText(view.context, "스틸배너가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+            activity?.let{
+                var intent = Intent(view.context, SteelBannerActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         hanging_btn.setOnClickListener{
-            Toast.makeText(view.context, "현수막이 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+            activity?.let{
+                var intent = Intent(view.context, HangingActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         designItem_btn.setOnClickListener{
-            Toast.makeText(view.context, "디자인상품이 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+            activity?.let{
+                var intent = Intent(view.context, DesignItemActivity::class.java)
+                startActivity(intent)
+            }
         }
 
 

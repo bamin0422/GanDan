@@ -18,6 +18,7 @@ import h2mud2.ganpanproject.gandan.activity.item.BannerActivity
 import h2mud2.ganpanproject.gandan.activity.item.DesignItemActivity
 import h2mud2.ganpanproject.gandan.activity.item.HangingActivity
 import h2mud2.ganpanproject.gandan.activity.item.SteelBannerActivity
+import h2mud2.ganpanproject.gandan.crawler.WebCrawler
 
 class home_fragment: Fragment() {
 
@@ -26,7 +27,7 @@ class home_fragment: Fragment() {
     lateinit var steelBannerBtn : Button
     lateinit var hangingBtn : Button
     lateinit var designItemBtn : Button
-
+    val webCrawler = WebCrawler()
 
 
     override fun onCreateView(
@@ -73,6 +74,12 @@ class home_fragment: Fragment() {
                 startActivity(intent)
             }
         }
+
+        // best 상품 크롤링, firestore 등록, gridView 뿌려주기
+
+        // 신상품 크롤링, firestore 등록, gridView 뿌려주기
+
+        // 추천상품 크롤링, firestore 등록, gridView 뿌려주기
 
         return view
     }
