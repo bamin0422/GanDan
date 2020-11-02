@@ -23,8 +23,7 @@ import h2mud2.ganpanproject.gandan.activity.item.HangingActivity
 import h2mud2.ganpanproject.gandan.activity.item.SteelBannerActivity
 import h2mud2.ganpanproject.gandan.crawler.WebCrawler
 import h2mud2.ganpanproject.gandan.model.Item
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import okio.Utf8.size
 import org.jetbrains.anko.doAsync
@@ -88,27 +87,31 @@ class home_fragment: Fragment() {
         }
 
 
+
         var bestItemSize : Int = 0
         var newItemSize : Int = 0
         var recommendedItemSize : Int = 0
 
-        doAsync {
-            bestItemSize = FireStoreManager().size("bestitem")
-            newItemSize = FireStoreManager().size("newitem")
-            recommendedItemSize = FireStoreManager().size("recommendeditem")
+        CoroutineScope(Dispatchers.IO).launch {
+            runBlocking {
+                bestItemSize = FireStoreManager().size("bestitem")
+                newItemSize = FireStoreManager().size("newitem")
+                recommendedItemSize = FireStoreManager().size("recommendeditem")
+            }
+            if(bestItemSize == 0 || newItemSize == 0 || recommendedItemSize == 0) {
+
+                // best 상품 크롤링, firestore 등록, gridView 뿌려주기
+                webCrawler.bestItemCrawler()
+
+                // 신상품 크롤링, firestore 등록, gridView 뿌려주기
+                webCrawler.newItemCrawler()
+
+                // 추천상품 크롤링, firestore 등록, gridView 뿌려주기
+                webCrawler.recommendedItemCrawler()
+            }
         }
-        Log.d("ㅎㅇ", "ㅇㅇㅇㅇㅇㅇㅇㅇㅇ "+bestItemSize+",    ddddd"+newItemSize+" dddd  "+recommendedItemSize)
-        if(bestItemSize == 0 || newItemSize == 0 || recommendedItemSize == 0) {
 
-            // best 상품 크롤링, firestore 등록, gridView 뿌려주기
-            webCrawler.bestItemCrawler()
 
-            // 신상품 크롤링, firestore 등록, gridView 뿌려주기
-            webCrawler.newItemCrawler()
-
-            // 추천상품 크롤링, firestore 등록, gridView 뿌려주기
-            webCrawler.recommendedItemCrawler()
-        }
 
 
         return view
@@ -122,12 +125,8 @@ class home_fragment: Fragment() {
 class FireStoreManager {
     val db = FirebaseFirestore.getInstance()
 
-    fun size(str : String): Int {
-        var curSize : Int = 0
-        db.collection(str).get().addOnSuccessListener {
-            curSize = it.size()
-        }
-        return curSize
+    suspend fun size(str : String): Int {
+        return db.collection(str).get().await().documents.size
     }
 
     fun deleteCollection(str: String) {
