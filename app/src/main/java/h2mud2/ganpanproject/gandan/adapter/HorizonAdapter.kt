@@ -31,9 +31,9 @@ class HorizonAdapter(val context: Context, val itemList : ArrayList<Item>) : Ada
         val itemPrice = itemView?.findViewById<TextView>(R.id.item_price)
 
         fun bind(item : Item, context: Context){
-            itemImg?.let { Glide.with(context).load(item.imgURL).into(it) }
+            itemImg?.let { Glide.with(context).load("http://"+item.imgURL).into(it) }
             itemName?.text = item.name
-            itemPrice?.text = item.price
+            itemPrice?.text = item.price+"원"
         }
     }
 
