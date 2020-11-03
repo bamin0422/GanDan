@@ -14,6 +14,7 @@ import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.FacebookSdk
+import com.facebook.login.LoginBehavior
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.Auth
@@ -68,6 +69,9 @@ class LoginActivity : AppCompatActivity(){
         btn_facebook.setOnClickListener{
             facebookLogin()
         }
+        btn_signin.setOnClickListener{
+            loginEmail()
+        }
     }
 
     public override fun onStart() {
@@ -79,6 +83,11 @@ class LoginActivity : AppCompatActivity(){
         }
     }
 
+    override fun onResume(){
+        super.onResume()
+        moveMainActivity(FirebaseAuth.getInstance().currentUser)
+    }
+
     fun createEmailId(){
         var email = email_edittext.text.toString()
         var password = password_edittext.text.toString()
@@ -86,11 +95,27 @@ class LoginActivity : AppCompatActivity(){
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if(task.isSuccessful){
                 moveMainActivity(task.result?.user)
+            }else{
+                moveMainActivity(null)
+            }
+        }
+    }
+
+    fun loginEmail(){
+        var email = email_edittext.text.toString()
+        var password = password_edittext.text.toString()
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if(task.isSuccessful){
+                moveMainActivity(task.result?.user)
+            }else{
+                moveMainActivity(null)
             }
         }
     }
 
     fun facebookLogin(){
+        LoginManager.getInstance().loginBehavior = LoginBehavior.WEB_VIEW_ONLY
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","email"))
         LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
             override fun onSuccess(result: LoginResult?) {
@@ -119,6 +144,17 @@ class LoginActivity : AppCompatActivity(){
         }
     }
 
+    fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?){
+        var credential = GoogleAuthProvider.getCredential(acct?.idToken, null)
+        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(this){ task ->
+            if(task.isSuccessful){
+                moveMainActivity(task.result?.user)
+            }else{
+                moveMainActivity(null)
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         callbackManager.onActivityResult(requestCode, resultCode, data)
@@ -129,17 +165,6 @@ class LoginActivity : AppCompatActivity(){
                 firebaseAuthWithGoogle(account!!)
             }catch (e: ApiException){
                 // Google Sign In failed
-            }
-        }
-    }
-
-    fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?){
-        var credential = GoogleAuthProvider.getCredential(acct?.idToken, null)
-        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(this){ task ->
-            if(task.isSuccessful){
-                moveMainActivity(task.result?.user)
-            }else{
-                moveMainActivity(null)
             }
         }
     }
