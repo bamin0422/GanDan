@@ -10,6 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
+        android:elevation="10dp"
         android:layout_height="56dp"
         android:background="#AEFFFFFF"
         app:layout_constraintTop_toTopOf="parent">
@@ -116,6 +117,10 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <TextView
+                    android:textColor="#538CD4"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
+                    android:shadowColor="#000000"
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -133,11 +138,17 @@
                     android:layout_height="175dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:background="#F8F8F8"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
                 <TextView
+                    android:textColor="#538CD4"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
+                    android:shadowColor="#000000"
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,12 +166,18 @@
                     android:layout_height="175dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:background="#F8F8F8"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/textView5"
                     app:layout_constraintTop_toBottomOf="@+id/textView4"
                     tools:layout_editor_absoluteX="12dp" />
 
                 <TextView
+                    android:textColor="#538CD4"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
+                    android:shadowColor="#000000"
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -178,8 +195,10 @@
                     android:layout_height="175dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:background="#F8F8F8"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

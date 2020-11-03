@@ -25,6 +25,7 @@ import h2mud2.ganpanproject.gandan.activity.item.HangingActivity
 import h2mud2.ganpanproject.gandan.activity.item.SteelBannerActivity
 import h2mud2.ganpanproject.gandan.adapter.HorizonAdapter
 import h2mud2.ganpanproject.gandan.crawler.WebCrawler
+import h2mud2.ganpanproject.gandan.decoration.RecyclerViewDecoration2
 import h2mud2.ganpanproject.gandan.model.Item
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
@@ -143,6 +144,10 @@ class home_fragment: Fragment() {
                 bestItemAdapter = HorizonAdapter(view.context, bestItemList)
                 newItemAdapter = HorizonAdapter(view.context, newItemList)
                 recommendedItemAdapter = HorizonAdapter(view.context, recommendedItemList)
+
+                bestItemGridView.addItemDecoration(RecyclerViewDecoration2())
+                newItemGridView.addItemDecoration(RecyclerViewDecoration2())
+                recommendedItemGridView.addItemDecoration(RecyclerViewDecoration2())
 
                 bestItemGridView.adapter = bestItemAdapter
                 newItemGridView.adapter = newItemAdapter
