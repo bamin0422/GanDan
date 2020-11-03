@@ -84,6 +84,97 @@ class WebCrawler{
             }
         }
     }
+
+    fun bannerItemCrawler() {
+        CoroutineScope(Dispatchers.IO).launch {
+            runBlocking {
+                for (i in 1..7) {
+                    val url = "http://bannermall.co.kr/product/list.html?cate_no=121&page=" + i.toString()
+                    val document = Jsoup.connect(url).get()
+                    val recommendedItem =
+                        document.select("div[class=xans-element- xans-product xans-product-listnormal]")
+                            .select("ul[class=prdList column5]").select("li[class=item xans-record-]")
+                    recommendedItem.forEach {
+                        var img = Replacer().replaceImg(it.select("img").toString())
+                        var title =
+                            Replacer().replaceTitle(
+                                it.select("p[class=name]").select("span")[2].toString()
+                            )
+                        var price = Replacer().replacePrice(
+                            it.select("li[class= xans-record-]").select("span")[1].toString()
+                        )
+                        val bannerItem = Item(title, price, img)
+
+                        FirebaseFirestore.getInstance().collection("banneritem").document(title)
+                            .set(bannerItem)
+                            .addOnSuccessListener {
+                                Log.d("SUCCESS", "bannerItem에 데이터가 추가되었습니다.")
+                            }.addOnFailureListener { e -> Log.d("FAILURE", "데이터 추가에 실패했습니다.") }
+                    }
+                }
+            }
+        }
+    }
+
+    fun DesignItemCrawler() {
+        CoroutineScope(Dispatchers.IO).launch {
+            runBlocking {
+                for (i in 1..6) {
+                    val url = "http://bannermall.co.kr/product/list.html?cate_no=126&page=" + i.toString()
+                    val document = Jsoup.connect(url).get()
+                    val recommendedItem =
+                        document.select("div[class=xans-element- xans-product xans-product-listnormal]")
+                            .select("ul[class=prdList column5]").select("li[class=item xans-record-]")
+                    recommendedItem.forEach {
+                        var img = Replacer().replaceImg(it.select("img").toString())
+                        var title =
+                            Replacer().replaceTitle(
+                                it.select("p[class=name]").select("span")[2].toString()
+                            )
+                        var price = Replacer().replacePrice(
+                            it.select("li[class= xans-record-]").select("span")[1].toString()
+                        )
+                        val bannerItem = Item(title, price, img)
+
+                        FirebaseFirestore.getInstance().collection("designitem").document(title)
+                            .set(bannerItem)
+                            .addOnSuccessListener {
+                                Log.d("SUCCESS", "designItem에 데이터가 추가되었습니다.")
+                            }.addOnFailureListener { e -> Log.d("FAILURE", "데이터 추가에 실패했습니다.") }
+                    }
+                }
+            }
+        }
+    }
+
+    fun SteelItemCrawler() {
+        CoroutineScope(Dispatchers.IO).launch {
+            runBlocking {
+                val url = "http://bannermall.co.kr/product/list.html?cate_no=125"
+                val document = Jsoup.connect(url).get()
+                val recommendedItem =
+                    document.select("div[class=xans-element- xans-product xans-product-listnormal]")
+                        .select("ul[class=prdList column5]").select("li[class=item xans-record-]")
+                recommendedItem.forEach {
+                    var img = Replacer().replaceImg(it.select("img").toString())
+                    var title =
+                        Replacer().replaceTitle(
+                            it.select("p[class=name]").select("span")[2].toString()
+                        )
+                    var price = Replacer().replacePrice(
+                        it.select("li[class= xans-record-]").select("span")[1].toString()
+                    )
+                    val bannerItem = Item(title, price, img)
+
+                    FirebaseFirestore.getInstance().collection("steelitem").document(title)
+                        .set(bannerItem)
+                        .addOnSuccessListener {
+                            Log.d("SUCCESS", "steelitem에 데이터가 추가되었습니다.")
+                        }.addOnFailureListener { e -> Log.d("FAILURE", "데이터 추가에 실패했습니다.") } }
+            }
+        }
+    }
+
 }
 
 class Replacer{
