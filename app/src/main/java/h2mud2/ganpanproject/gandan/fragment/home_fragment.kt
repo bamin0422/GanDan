@@ -1,6 +1,7 @@
 package h2mud2.ganpanproject.gandan.fragment
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -9,7 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +27,7 @@ import h2mud2.ganpanproject.gandan.activity.item.BannerActivity
 import h2mud2.ganpanproject.gandan.activity.item.DesignItemActivity
 import h2mud2.ganpanproject.gandan.activity.item.HangingActivity
 import h2mud2.ganpanproject.gandan.activity.item.SteelBannerActivity
+import h2mud2.ganpanproject.gandan.activity.tool.DesignToolActivity
 import h2mud2.ganpanproject.gandan.adapter.HorizonAdapter
 import h2mud2.ganpanproject.gandan.crawler.WebCrawler
 import h2mud2.ganpanproject.gandan.decoration.RecyclerViewDecoration2
@@ -32,6 +37,8 @@ import kotlinx.coroutines.tasks.await
 import okio.Utf8.size
 import org.jetbrains.anko.Orientation
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onContextClick
 
 class home_fragment: Fragment() {
 
@@ -40,10 +47,14 @@ class home_fragment: Fragment() {
     lateinit var steelBannerBtn : Button
     lateinit var hangingBtn : Button
     lateinit var designItemBtn : Button
+    lateinit var designToolBtn : Button
+    lateinit var requestBtn : Button
 
     lateinit var bestItemAdapter : HorizonAdapter
     lateinit var newItemAdapter : HorizonAdapter
     lateinit var recommendedItemAdapter : HorizonAdapter
+    lateinit var itemClicked : LinearLayout
+    lateinit var scrollView : ScrollView
 
     val webCrawler = WebCrawler()
     var bestItemList : ArrayList<Item> = arrayListOf()
@@ -78,6 +89,30 @@ class home_fragment: Fragment() {
         steelBannerBtn = view.findViewById(R.id.steelBannerButton)
         hangingBtn = view.findViewById(R.id.hangingButton)
         designItemBtn = view.findViewById(R.id.designItemButton)
+        designToolBtn = view.findViewById(R.id.design_btn)
+        requestBtn = view.findViewById(R.id.request_btn)
+
+        itemClicked = view.findViewById(R.id.itemClicked)
+        itemClicked.visibility = View.GONE
+        scrollView = view.findViewById(R.id.scrollView2)
+
+        scrollView.setOnScrollChangeListener(object : View.OnScrollChangeListener{
+            override fun onScrollChange(
+                v: View?,
+                scrollX: Int,
+                scrollY: Int,
+                oldScrollX: Int,
+                oldScrollY: Int
+            ) {
+                itemClicked.visibility =View.GONE
+            }
+
+        })
+
+        designToolBtn.setOnClickListener {
+            val intent = Intent(view.context, DesignToolActivity::class.java)
+            startActivity(intent)
+        }
 
         bannerBtn.setOnClickListener {
             activity?.let{
@@ -141,9 +176,15 @@ class home_fragment: Fragment() {
             operation.await()
 
             withContext(Dispatchers.Main){
-                bestItemAdapter = HorizonAdapter(view.context, bestItemList)
-                newItemAdapter = HorizonAdapter(view.context, newItemList)
-                recommendedItemAdapter = HorizonAdapter(view.context, recommendedItemList)
+                bestItemAdapter = HorizonAdapter(view.context, bestItemList){
+                    itemClicked.visibility = View.VISIBLE
+                }
+                newItemAdapter = HorizonAdapter(view.context, newItemList){
+                    itemClicked.visibility = View.VISIBLE
+                }
+                recommendedItemAdapter = HorizonAdapter(view.context, recommendedItemList){
+                    itemClicked.visibility = View.VISIBLE
+                }
 
                 bestItemGridView.addItemDecoration(RecyclerViewDecoration2())
                 newItemGridView.addItemDecoration(RecyclerViewDecoration2())
@@ -156,9 +197,12 @@ class home_fragment: Fragment() {
                 bestItemGridView.layoutManager = bestlm
                 newItemGridView.layoutManager = newlm
                 recommendedItemGridView.layoutManager = recommendedlm
+
                 return@withContext
             }
+
         }
+
         return view
     }
 
