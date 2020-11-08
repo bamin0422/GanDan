@@ -16,7 +16,7 @@
         </activity>
 
         <activity android:name=".activity.MainActivity"/>
-
+        <activity android:name=".activity.tool.DesignToolActivity"/>
         <activity android:name=".activity.item.BannerActivity"/>
         <activity android:name=".activity.item.DesignItemActivity"/>
         <activity android:name=".activity.item.HangingActivity"/>

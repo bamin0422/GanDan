@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#FFFFFF"
     android:layout_width="match_parent"
+    android:id="@+id/all"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
@@ -29,6 +30,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
@@ -117,16 +119,16 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <TextView
-                    android:textColor="#538CD4"
-                    android:shadowDx="5.0"
-                    android:shadowDy="5.0"
-                    android:shadowColor="#000000"
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="12dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
                     android:text="베스트상품"
+                    android:textColor="#538CD4"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -137,6 +139,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="175dp"
                     android:layout_gravity="center"
+                    android:focusable="false"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="#F8F8F8"
@@ -145,16 +148,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
                 <TextView
-                    android:textColor="#538CD4"
-                    android:shadowDx="5.0"
-                    android:shadowDy="5.0"
-                    android:shadowColor="#000000"
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="12dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
                     android:text="신상품"
+                    android:textColor="#538CD4"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -166,6 +169,7 @@
                     android:layout_height="175dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
+                    android:focusable="false"
                     android:layout_marginBottom="12dp"
                     android:background="#F8F8F8"
                     android:orientation="horizontal"
@@ -174,16 +178,16 @@
                     tools:layout_editor_absoluteX="12dp" />
 
                 <TextView
-                    android:textColor="#538CD4"
-                    android:shadowDx="5.0"
-                    android:shadowDy="5.0"
-                    android:shadowColor="#000000"
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="12dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
                     android:text="추천상품"
+                    android:textColor="#538CD4"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -196,6 +200,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
+                    android:focusable="false"
                     android:background="#F8F8F8"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -205,5 +210,38 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/itemClicked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2">
+
+        <Button
+            android:id="@+id/design_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#538CD4"
+            android:text="디자인하기"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/request_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#538CD4"
+            android:textColor="#FFFFFF"
+            android:text="제작의뢰"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
