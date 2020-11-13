@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.ImageButton
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,6 +18,7 @@ import h2mud2.ganpanproject.gandan.adapter.HorizonAdapter
 import h2mud2.ganpanproject.gandan.crawler.WebCrawler
 import h2mud2.ganpanproject.gandan.decoration.RecyclerViewDecoration
 import h2mud2.ganpanproject.gandan.fragment.FireStoreManager
+import h2mud2.ganpanproject.gandan.model.CanvasView
 import h2mud2.ganpanproject.gandan.model.Item
 import kotlinx.android.synthetic.main.activity_design.*
 import kotlinx.coroutines.*
@@ -42,7 +40,7 @@ class DesignToolActivity : AppCompatActivity(){
     lateinit var backgroundBtn : ImageButton
 
     lateinit var sizeLayout : ConstraintLayout
-    lateinit var ganpanFrame : FrameLayout
+    lateinit var ganpanFrame : CanvasView
 
     lateinit var heigtEditor : EditText
     lateinit var widthEditor : EditText
@@ -57,6 +55,7 @@ class DesignToolActivity : AppCompatActivity(){
     lateinit var colorPreview : FrameLayout
 
     // pen
+    lateinit var closeThicknessPen : Button
     lateinit var penLayout : ConstraintLayout
     lateinit var colorPadLayoutPen : ConstraintLayout
     lateinit var colorPadPen : ColorPickerView
@@ -65,8 +64,16 @@ class DesignToolActivity : AppCompatActivity(){
     lateinit var penThicknessBtn : ImageButton
     lateinit var ereaserBtn : ImageButton
     lateinit var colorPreviewPen : FrameLayout
+    lateinit var penThicknessLayout : ConstraintLayout
+    lateinit var penThicknessTV : TextView
+    lateinit var penThicknessSeekBar : SeekBar
+    lateinit var penEreaserLayout : ConstraintLayout
+    lateinit var penEreaserSeekBar : SeekBar
+    lateinit var penEreaserTV : TextView
+    lateinit var closeEreaserPen : Button
 
-    var cnt = 0
+    var menuCheck = 0
+    var detailMenuCheck = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,33 +107,67 @@ class DesignToolActivity : AppCompatActivity(){
         colorPadLayoutPen = findViewById(R.id.colorPadLayoutpen)
         colorPadPen = findViewById(R.id.penColorPad)
         closeColorPickerPen = findViewById(R.id.close_colorpad_pen)
+        closeThicknessPen = findViewById(R.id.close_thickness_pen)
         penColorBtn = findViewById(R.id.penColor)
         penThicknessBtn = findViewById(R.id.penThickness)
         ereaserBtn = findViewById(R.id.ereaser)
         colorPreviewPen = findViewById(R.id.colorpreviewpen)
+        penThicknessLayout = findViewById(R.id.penThicknessLayout)
+        penThicknessTV =findViewById(R.id.penThicknessTV)
+        penThicknessSeekBar = findViewById(R.id.penThicknessSeekBar)
+        penEreaserLayout = findViewById(R.id.penEreaserLayout)
+        penEreaserSeekBar = findViewById(R.id.penEreaserSeekBar)
+        penEreaserTV = findViewById(R.id.penEreaserTV)
+        closeEreaserPen = findViewById(R.id.close_ereaser_pen)
 
 
         var params : ViewGroup.LayoutParams = ganpanFrame.layoutParams
         var color = 0
         var penColor = 0
+        var penThickness = 1
+        var ereaserThickness = 1
+        penThicknessSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                penThickness = progress + 1
+                ganpanFrame.setThickness(penThickness)
+                penThicknessTV.text = "선굵기 : "+(progress+1).toString()
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+
+        })
+
+        penEreaserSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                ereaserThickness = progress + 1
+
+                penEreaserTV.text = "지우개 굵기 : "+(progress+1).toString()
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+
+        })
 
 
 
         cancelBtn.setOnClickListener {
-            if(checkMenu(cnt)){
-                when(cnt){
+            if(checkMenu(menuCheck)){
+                when(menuCheck){
                     2 -> penLayout.visibility = View.GONE
                     4 -> sizeLayout.visibility = View.GONE
                     5 -> backgroundLayout.visibility = View.GONE
                 }
-                cnt = 0
+                menuCheck = 0
             }
             else finish()
         }
         saveBtn.setOnClickListener {
-            when(cnt){
+            when(menuCheck){
                 2 -> {
+                    colorPadLayoutPen.visibility = View.GONE
                     penLayout.visibility = View.GONE
+                    penThicknessLayout.visibility = View.GONE
+                    penEreaserLayout.visibility = View.GONE
                 }
                 4 -> {
                     params.width = widthEditor.text.toString().toInt()
@@ -134,16 +175,17 @@ class DesignToolActivity : AppCompatActivity(){
                     sizeLayout.visibility = View.GONE
                 }
                 5 -> {
+                    colorPadLayoutPen.visibility = View.GONE
                     ganpanFrame.backgroundColor = color
                     backgroundLayout.visibility = View.GONE
                 }
             }
-            cnt = 0
+            menuCheck = 0
         }
         photoBtn.setOnClickListener {  }
         textBtn.setOnClickListener {  }
         sizeBtn.setOnClickListener {
-            cnt = 4
+            menuCheck = 4
             sizeLayout.visibility = View.VISIBLE
         }
 
@@ -155,7 +197,7 @@ class DesignToolActivity : AppCompatActivity(){
         }
         backgroundBtn.setOnClickListener {
             colorPadLayoutBackground.visibility = View.GONE
-            cnt = 5
+            menuCheck = 5
             backgroundLayout.visibility = View.VISIBLE
         }
 
@@ -171,43 +213,58 @@ class DesignToolActivity : AppCompatActivity(){
 
         // pen 설정
         penBtn.setOnClickListener {
-            cnt = 2
+            menuCheck = 2
             penLayout.visibility = View.VISIBLE
         }
         closeColorPickerPen.setOnClickListener {
             colorPadLayoutPen.visibility = View.GONE
         }
-        ereaserBtn.setOnClickListener {  }
+        closeEreaserPen.setOnClickListener {
+            penEreaserLayout.visibility = View.GONE
+        }
+        ereaserBtn.setOnClickListener {
+            penEreaserLayout.visibility = View.VISIBLE
+        }
         penColorBtn.setOnClickListener {
             colorPadLayoutPen.visibility = View.VISIBLE
         }
-        penThicknessBtn.setOnClickListener {  }
+        penThicknessBtn.setOnClickListener {
+            penThicknessLayout.visibility = View.VISIBLE
+        }
         colorPadPen.setOnColorChangedListener {
             penColor = colorPadPen.color
+            ganpanFrame.setPaint(penColor)
             colorPreviewPen.setBackgroundColor(penColor)
+        }
+        closeThicknessPen.setOnClickListener {
+            penThicknessLayout.visibility = View.GONE
         }
 
     }
 
     override fun onBackPressed() {
-        when(cnt){
+        when(menuCheck){
             0 -> finish()
             1-> {
-                cnt = 0
+                menuCheck = 0
             }
             2-> {
-                cnt = 0
+                menuCheck = 0
+                penEreaserLayout.visibility = View.GONE
+                colorPadLayoutPen.visibility = View.GONE
                 penLayout.visibility = View.GONE
+                penThicknessLayout.visibility =View.GONE
             }
             3-> {
-                cnt = 0
+                menuCheck = 0
             }
             4 -> {
-                cnt = 0
+                menuCheck = 0
                 sizeLayout.visibility = View.GONE
             }
             5 -> {
-                cnt = 0
+                colorPadLayoutPen.visibility = View.GONE
+                menuCheck = 0
                 backgroundLayout.visibility = View.GONE
             }
         }
