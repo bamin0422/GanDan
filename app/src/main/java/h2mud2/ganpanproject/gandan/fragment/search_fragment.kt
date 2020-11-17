@@ -1,21 +1,15 @@
 package h2mud2.ganpanproject.gandan.fragment
 
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
-import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.GridLayoutAnimationController
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import h2mud2.ganpanproject.gandan.R
@@ -26,17 +20,12 @@ import h2mud2.ganpanproject.gandan.activity.item.SteelBannerActivity
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot
 import h2mud2.ganpanproject.gandan.activity.MainActivity
-import h2mud2.ganpanproject.gandan.adapter.Banner
-import kotlinx.android.synthetic.main.search_fragment.*
-import org.jetbrains.anko.find
-import java.util.*
-import h2mud2.ganpanproject.gandan.adapter.HorizonAdapter
 import h2mud2.ganpanproject.gandan.adapter.SearchAdapter
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
-import h2mud2.ganpanproject.gandan.model.Item
 import h2mud2.ganpanproject.gandan.model.ItemName
-import kotlin.collections.HashMap
+import kotlinx.android.synthetic.main.search_fragment.view.*
+import kotlin.collections.ArrayList
 
 class search_fragment: Fragment() {
     var firestore : FirebaseFirestore? = null
@@ -59,9 +48,6 @@ class search_fragment: Fragment() {
         val searchBtn = view!!.findViewById(R.id.searchBtn) as ImageButton
         val backBtn = view!!.findViewById(R.id.back_btn) as ImageButton
         val searchItem_Rv = view!!.findViewById(R.id.searchItemRecyclerview) as RecyclerView
-
-        searchItem_Rv.layoutManager = LinearLayoutManager(context)
-        searchItem_Rv.setHasFixedSize(true)
 
         var overlapStringList: ArrayList<ItemName> = arrayListOf()
 
@@ -105,29 +91,24 @@ class search_fragment: Fragment() {
             }
 
             activity?.runOnUiThread(Runnable {
-
                 searchBtn.setOnClickListener {
                     val searchedString: String = searchWord.text.toString()
                     if(searchedString != ""){
                         for(List in productList){
                             if (List.name.contains(searchedString)) {
                                 overlapStringList.add(List)
-                                Log.d(ContentValues.TAG, "obj : ${List.name.toString()}")
+                                Log.d(ContentValues.TAG, "overlapStringList : ${List.name.toString()}")
                             }
                         }
                     }else{
-                        for(List in productList){
-                            overlapStringList.add(List)
-                        }
+                        Toast.makeText(context, "검색어를 입력해주세요", Toast.LENGTH_LONG).show();
+                        overlapStringList = arrayListOf()
                     }
                     val adapter = SearchAdapter(overlapStringList)
                     searchItem_Rv.adapter = adapter
                 }
             })
-
         }
-
-        val adapter = SearchAdapter(overlapStringList)
 
         backBtn.setOnClickListener {
             activity?.let {
@@ -170,7 +151,18 @@ class search_fragment: Fragment() {
             }
         }
 
-        searchItem_Rv.adapter = adapter
+        val spaceDecoration = VerticalSpaceItemDecoration(20)
+        searchItem_Rv.addItemDecoration(spaceDecoration)
+        searchItem_Rv.layoutManager = LinearLayoutManager(context)
+        searchItem_Rv.setHasFixedSize(true)
        return view
+    }
+
+    inner class VerticalSpaceItemDecoration(private val verticalSpaceHeight: Int) :
+        RecyclerView.ItemDecoration() {
+
+        override fun getItemOffsets(outRect: Rect, itemPosition: Int, parent: RecyclerView) {
+            outRect.bottom = verticalSpaceHeight
+        }
     }
 }
