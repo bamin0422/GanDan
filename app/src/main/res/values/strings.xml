@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GanDan</string>
-    <string name="facebook_app_id">3063878387052273</string> <string name="fb_login_protocol_scheme">fb3063878387052273</string>
+    <string name="facebook_app_id">3063878387052273</string>
+    <string name="fb_login_protocol_scheme">fb3063878387052273</string>
 
     <!-- Sign In -->
     <string name="email">Email</string>

@@ -1,24 +1,22 @@
 package h2mud2.ganpanproject.gandan.fragment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import h2mud2.ganpanproject.gandan.R
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager
-import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import kotlinx.android.synthetic.main.account_fragment.*
 import com.google.firebase.auth.FirebaseAuth
-import h2mud2.ganpanproject.gandan.activity.LoginActivity
+import h2mud2.ganpanproject.gandan.activity.*
+import h2mud2.ganpanproject.gandan.activity.account.NoticeActivity
+import h2mud2.ganpanproject.gandan.activity.account.QuestionActivity
+import h2mud2.ganpanproject.gandan.activity.account.QuiksilverActivity
+import h2mud2.ganpanproject.gandan.activity.account.informationActivity
 import kotlinx.android.synthetic.main.account_fragment.view.*
 
 class account_fragment: Fragment(){
@@ -41,6 +39,23 @@ class account_fragment: Fragment(){
             .build()
 
         googleSignInClient = context?.let { GoogleSignIn.getClient(it, gso) }
+
+        view.text_Quiksilver.setOnClickListener {
+            startActivity(Intent(activity, QuiksilverActivity::class.java))
+        }
+
+        view.text_Notice.setOnClickListener {
+            startActivity(Intent(activity, NoticeActivity::class.java))
+        }
+
+        view.text_Information.setOnClickListener {
+            startActivity(Intent(activity, informationActivity::class.java))
+        }
+
+        view.text_Question.setOnClickListener {
+            startActivity(Intent(activity, QuestionActivity::class.java))
+        }
+
 
         return view
     }
