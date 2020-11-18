@@ -5,7 +5,11 @@
     <!-- internet permission (admin) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
+
         android:theme="@style/GanDanTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.account.QuestionDetailActivity"></activity>

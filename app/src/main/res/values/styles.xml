@@ -13,6 +13,10 @@
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
     </style>
 
+    <style name="seekBarTheme" parent="Widget.AppCompat.SeekBar">
+        <item name="colorAccent">#4E8AD3</item>
+    </style>
+
     <style name="customSearchViewStyle" parent="Widget.AppCompat.SearchView">
         <item name="android:fontFamily">@font/font</item>
     </style>
