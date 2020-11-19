@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="option">
+        <item>이름순</item>
+        <item>가격순</item>
+    </string-array>
+</resources>
