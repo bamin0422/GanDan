@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_item"
-        app:defaultQueryHint="검색어를 입력해주세요."
-        android:backgroundTintMode="screen"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/searchItem_Layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:searchIcon="@drawable/ic_baseline_search_24"
-
-        app:iconifiedByDefault="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </androidx.appcompat.widget.SearchView>
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+        <EditText
+            android:id="@+id/searchWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="검색어를 입력해주세요."
+            android:inputType="text" />
+
+        <ImageButton
+            android:id="@+id/searchBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:src="@drawable/ic_baseline_search_24" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchItemRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layout_1"
+        app:layout_constraintTop_toBottomOf="@+id/searchItem_Layout"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_1"
         android:layout_width="match_parent"
-        android:background="#FAFAFA"
         android:layout_height="100dp"
-        android:layout_marginBottom="12dp"
+        android:background="#FAFAFA"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -45,6 +73,7 @@
 
         <HorizontalScrollView
 
+            android:id="@+id/horizontalScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -58,9 +87,9 @@
 
                 <Button
                     android:id="@+id/banner"
-                    android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
                     android:background="@drawable/btn_rounded"
                     android:text="배너"
                     android:textColor="#FFFFFF"
@@ -69,9 +98,9 @@
 
                 <Button
                     android:id="@+id/steelbanner"
-                    android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
                     android:background="@drawable/btn_rounded"
                     android:text="스틸배너"
                     android:textColor="#FFFFFF"
@@ -80,9 +109,9 @@
 
                 <Button
                     android:id="@+id/hanging"
-                    android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
                     android:background="@drawable/btn_rounded"
                     android:text="현수막"
                     android:textColor="#FFFFFF"
@@ -91,9 +120,9 @@
 
                 <Button
                     android:id="@+id/designItem"
-                    android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
                     android:background="@drawable/btn_rounded"
                     android:text="디자인 상품"
                     android:textColor="#FFFFFF"

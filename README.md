@@ -1,4 +1,4 @@
-# 간단 - 간판을 단번에 !
+# 간단 - 간판을 단번에 ! ![GitHub top language](https://img.shields.io/github/languages/top/bamin0422/GanDan) 
 
 ![](/img/ganpan_title2.png)
 
