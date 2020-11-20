@@ -12,6 +12,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import java.util.ArrayList
 
 public class CanvasView : ConstraintLayout {
+    
+    /* 2020.11.20 / 민대인
+    디자인툴의 ganpan_frame을 그림판처럼 사용가능하게 함.
+     */
 
     lateinit var pathInfo : PathInfo
     var data = ArrayList<PathInfo>()
