@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     
-    /* 2020.10.28 / 민대인
+    /* 2020.09.26 / 민대인
     메인액티비티, 프래그먼트를 viewPager와 bottomNavigationView로 
      */
 
