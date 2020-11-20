@@ -33,7 +33,7 @@ import org.jetbrains.anko.textColor
 
 class DesignToolActivity : AppCompatActivity(), View.OnTouchListener {
     
-    /* 2020.09.28 / 민대인
+    /* 2020.11.20 / 민대인
     디자인 툴
      */
 
