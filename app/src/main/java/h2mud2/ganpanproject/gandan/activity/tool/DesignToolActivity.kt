@@ -32,6 +32,10 @@ import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.textColor
 
 class DesignToolActivity : AppCompatActivity(), View.OnTouchListener {
+    
+    /* 2020.09.28 / 민대인
+    디자인 툴
+     */
 
     lateinit var cancelBtn : Button
     lateinit var saveBtn : Button
