@@ -66,6 +66,10 @@ class home_fragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        
+        /* 2020.11.04 / 민대인
+    home_fragment carouselView를 통해, 대문사진을 보여주고, 베스트상품, 신상품, 추천상품을 WebCrawler를 통해 웹에서 크롤링해와 Item들을 firestore에 저장함.
+     */
 
         val view = inflater.inflate(layout.home_fragment, container, false)
         var carouselView = view.findViewById(R.id.item_carousel) as CarouselView
