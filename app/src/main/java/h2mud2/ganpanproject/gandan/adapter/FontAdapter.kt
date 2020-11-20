@@ -13,6 +13,10 @@ import h2mud2.ganpanproject.gandan.R
 
 class FontAdapter(val context: Context, val itemList : ArrayList<FontSt>, val itemClick: (FontSt) -> Unit) : Adapter<FontAdapter.Holder>(){
 
+     /* 2020.11.20 / 민대인
+    디자인툴에서 horizontal recyclerView에 폰트 적용하게 도와주는 adapter
+     */
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.menu_font, parent, false)
         return Holder(view, itemClick)
