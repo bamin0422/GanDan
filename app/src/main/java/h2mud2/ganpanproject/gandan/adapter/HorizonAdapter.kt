@@ -14,6 +14,10 @@ import h2mud2.ganpanproject.gandan.model.Item
 
 class HorizonAdapter(val context: Context, val itemList : ArrayList<Item>, val itemClick: (Item) -> Unit) : Adapter<HorizonAdapter.Holder>(){
 
+    /* 2020.11.03 / 민대인
+    home_fragment의 베스트상품, 신상품, 추천상품을 적용하는 horizon
+     */
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.recycler_items, parent, false)
         return Holder(view, itemClick)
