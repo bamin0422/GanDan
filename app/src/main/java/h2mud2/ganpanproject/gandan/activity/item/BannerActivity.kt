@@ -22,6 +22,10 @@ import kotlinx.coroutines.*
 
 class BannerActivity : AppCompatActivity(){
 
+    /* 2020.09.28 / 민대인
+    배너 아이템을 웹사이트에서 크롤링해서 가져옴. 
+     */
+    
     lateinit var backBtn: Button
     lateinit var bannerRecyclerView : RecyclerView
     lateinit var itemAdapter : GridAdapter
