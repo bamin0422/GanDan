@@ -14,6 +14,10 @@ import h2mud2.ganpanproject.gandan.R
 
 class MenuAdapter(val context: Context, val menuL: MutableList<Banner>, val itemClick: (Banner) -> Unit) :
     RecyclerView.Adapter<MenuAdapter.Holder>() {
+        
+     /* 2020.09.27 / 민대인
+     menufragment의 menuList를 적용시키는 adapter
+     */
 
     inner class Holder(view: View?, itemClick: (Banner) -> Unit) : RecyclerView.ViewHolder(view!!) {
         val menuName = view?.findViewById<TextView>(R.id.menuNameTV)
