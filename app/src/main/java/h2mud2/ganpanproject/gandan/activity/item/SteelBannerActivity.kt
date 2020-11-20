@@ -21,6 +21,10 @@ import kotlinx.coroutines.*
 import java.util.ArrayList
 
 class SteelBannerActivity : AppCompatActivity(){
+    
+     /* 2020.09.28 / 민대인
+    스틸배너아이템을 웹사이트에서 크롤링해서 가져옴. 
+     */
 
     lateinit var backBtn: Button
     lateinit var steelBannerRecyclerView : RecyclerView
