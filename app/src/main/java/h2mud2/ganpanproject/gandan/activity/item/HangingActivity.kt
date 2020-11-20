@@ -12,6 +12,10 @@ import h2mud2.ganpanproject.gandan.activity.tool.DesignToolActivity
 import h2mud2.ganpanproject.gandan.adapter.HorizonAdapter
 
 class HangingActivity : AppCompatActivity(){
+    
+    /* 2020.09.28 / 민대인
+    현수막은 아이템이 따로 없어 사진과 
+     */
 
     lateinit var backBtn: Button
     lateinit var hangingItemRecyclerView : RecyclerView
