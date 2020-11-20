@@ -11,6 +11,10 @@ import androidx.fragment.app.Fragment
 import h2mud2.ganpanproject.gandan.R
 
 class cart_fragment: Fragment() {
+    
+    /* 2020.10.27 / 민대인
+    장바구니 
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
