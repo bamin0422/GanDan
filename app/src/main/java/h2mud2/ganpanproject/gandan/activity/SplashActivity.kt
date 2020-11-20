@@ -8,7 +8,7 @@ import h2mud2.ganpanproject.gandan.R
 
 class SplashActivity: AppCompatActivity() {
     
-    /* 2020.10.28 / 민대인
+    /* 2020.09.27 / 민대인
     간단 인트로
      */
     
