@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        android:font="@font/nixgonl"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/nixgonm"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/bccard"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/bccard"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggrae1"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggrae1"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggrae2"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggrae2"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraemelona1"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraemelona1"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraemelona2"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraemelona2"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraesamanco1"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraesamanco1"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraesamanco2"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraesamanco2"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraetaom1"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraetaom1"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraetaom2"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraetaom2"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraev21"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraev21"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/binggraev22"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/binggraev22"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/bmeuljiro"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/bmeuljiro"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/gong1"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/gong1"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/gong2"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/gong2"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/gong3"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/gong3"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/jalpullineun"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/jalpullineun"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/kotra"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/kotra"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/maruburi"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/maruburi"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/paybooc1"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/paybooc1"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/paybooc2"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/paybooc2"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/paybooc3"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/paybooc3"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/paybooc4"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/paybooc4"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/spoqab"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/spoqab"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/spoqal"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/spoqal"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/spoqar"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/spoqar"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/spoqab"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/spoqab"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/spoqathin"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/spoqathin"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/wemakepriceb"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/wemakepriceb"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/wemakepricer"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/wemakepricer"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+    <font
+        android:font="@font/wemakepricesb"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/wemakepricesb"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
+
+</font-family>
