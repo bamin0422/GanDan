@@ -15,7 +15,28 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3">
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/addTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:text="텍스트를 입력해주세요."
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/addTextView"
+            android:id="@+id/addImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </h2mud2.ganpanproject.gandan.model.CanvasView>
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -325,59 +346,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/penEreaserLayout"
-            android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/penEreaserTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:text="지우개 굵기 : 1"
-                android:textColor="#FFFFFF"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/penEreaserSeekBar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/close_ereaser_pen"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/ic_baseline_cancel_24"
-                app:layout_constraintBottom_toTopOf="@+id/penEreaserSeekBar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatSeekBar
-                android:theme="@style/seekBarTheme"
-                android:id="@+id/penEreaserSeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginStart="20dp"
-                android:progress="0"
-                android:max="9"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/penEreaserTV" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/colorPadLayoutpen"
@@ -461,7 +429,204 @@
 
         </LinearLayout>
 
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/textController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2F2F2F"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/colorPadLayouttext"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="354dp"
+                android:layout_marginBottom="56dp"
+                android:background="#2F2F2F"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <net.margaritov.preference.colorpicker.ColorPickerView
+                    android:id="@+id/textColorPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/close_colorpad_text"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_baseline_cancel_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <FrameLayout
+                    android:id="@+id/colorpreviewtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textColorPad" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/textStyleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textInputTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:text="텍스트 : "
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/textInputET"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="#FFFFFF"
+                android:text="텍스트를 입력하세요."
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textInputTV"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textSizeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:text="크기 : "
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textInputET"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/textSizeET"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="#FFFFFF"
+                android:inputType="number"
+                android:text="10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textSizeTV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/close_textEditer"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/ic_baseline_cancel_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fontLayout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout6">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fontRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2F2F2F"
+                android:orientation="horizontal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageButton
+                android:id="@+id/textEditer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="#2F2F2F"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_text_fields_24" />
+
+            <ImageButton
+                android:id="@+id/textFont"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="#2F2F2F"
+                android:src="@drawable/ic_baseline_text_format_24" />
+
+            <ImageButton
+                android:id="@+id/textColor"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="#2F2F2F"
+                android:src="@drawable/ic_baseline_color_lens_24" />
+
+            <ImageButton
+                android:id="@+id/addText"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="#2F2F2F"
+                android:src="@drawable/ic_baseline_add_24" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

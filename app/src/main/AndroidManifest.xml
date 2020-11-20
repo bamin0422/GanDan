@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="h2mud2.ganpanproject.gandan">
     <!-- internet permission (admin) -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:theme="@style/GanDanTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.account.QuestionDetailActivity"></activity>
@@ -32,6 +33,7 @@
         <activity android:name=".activity.item.HangingActivity" />
         <activity android:name=".activity.item.SteelBannerActivity" />
         <activity android:name=".activity.account.QuiksilverActivity" />
+        <activity android:name=".activity.tool.DesignToolActivity" />
         <activity
             android:name=".activity.account.informationActivity"
             android:screenOrientation="landscape" />
