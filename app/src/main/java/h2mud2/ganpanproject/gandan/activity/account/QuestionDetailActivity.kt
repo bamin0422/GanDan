@@ -7,6 +7,10 @@ import h2mud2.ganpanproject.gandan.R
 
 class QuestionDetailActivity : AppCompatActivity() {
 
+    /* 2020.11.13 / 김학균
+    질문만 나와있는 Activity에서 클릭하게 된다면 대답을 추가적으로 나타내는 Activity로 전환
+     */
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

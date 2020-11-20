@@ -20,6 +20,12 @@ import h2mud2.ganpanproject.gandan.activity.account.informationActivity
 import kotlinx.android.synthetic.main.account_fragment.view.*
 
 class account_fragment: Fragment(){
+
+    /* 2020.11.05 / 김학균
+    사용자가 계정을 변경할 수 있도록 로그아웃 기능 추가 및
+    공지사항, 배송안내, 이용안내, 자주하는 질문 클릭시 화면전환 추가
+     */
+
     var googleSignInClient : GoogleSignInClient? = null
 
     override fun onCreateView(

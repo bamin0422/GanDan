@@ -42,6 +42,10 @@ import java.util.Arrays
 
 class LoginActivity : AppCompatActivity(){
 
+    /* 2020.11.04 / 김학균
+    쇼핑하는데 있어서 필요한 로그인 기능 페이스북과 구글, 회원가입을 구현함.
+     */
+
     var auth: FirebaseAuth? = null
 
     var googleSignInClient : GoogleSignInClient? = null

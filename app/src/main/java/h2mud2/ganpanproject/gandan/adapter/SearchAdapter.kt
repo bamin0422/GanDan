@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import h2mud2.ganpanproject.gandan.R
 import h2mud2.ganpanproject.gandan.model.ItemName
 
+    /* 2020.11.07 / 김학균
+    검색한 텍스트를 포함한 내용들 리사이클러뷰로 나타내기 위한 어댑터
+     */
 class SearchAdapter(val itemList: ArrayList<ItemName>) : RecyclerView.Adapter<SearchAdapter.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

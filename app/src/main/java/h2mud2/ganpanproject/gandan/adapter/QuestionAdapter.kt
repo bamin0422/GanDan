@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import h2mud2.ganpanproject.gandan.R
 import h2mud2.ganpanproject.gandan.model.QuestionItem
 
-
+    /* 2020.11.13 / 김학균
+    자주하는 질문을 리사이클러뷰로  나타내기 위한 어댑터
+     */
 class QuestionAdapter(val items : MutableList<QuestionItem>, val context: Context) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>(){
 
     interface ItemClickListener {

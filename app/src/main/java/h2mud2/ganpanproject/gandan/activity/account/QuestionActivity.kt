@@ -19,6 +19,10 @@ import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 
 class QuestionActivity : AppCompatActivity() {
+    /* 2020.11.13 / 김학균
+    웹 크롤링 Jsoup을 통해 자주 보는 질문에 대한 질문과 대답을 가져오도록 함.
+    질문만 나와있는 Activity에서 클릭하게 된다면 QuestionDetailActivity로 이동하게 됨.
+     */
 
     val weburl = "http://bannermall.co.kr/shopinfo/faq.html#2"
     val TAG = "Question Activity"

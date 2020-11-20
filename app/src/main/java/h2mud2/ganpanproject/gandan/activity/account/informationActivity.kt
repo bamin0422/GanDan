@@ -19,6 +19,11 @@ import java.net.URL
 
 class informationActivity : AppCompatActivity() {
 
+    /* 2020.11.13 / 김학균
+     웹사이트에 있는 사진을 가져와서 이미지뷰에 적용시킴
+     가로가 큰 이미지랑 강제적으로 휴대폰 화면이 가로로 되도록 함.
+      */
+
     val weburl = "http://bannermall.co.kr/shopinfo/guide.html"
     val TAG = "Information Activity"
 

@@ -10,6 +10,12 @@ import kotlinx.android.synthetic.main.activity_quiksilver.*
 
 class QuiksilverActivity : AppCompatActivity() {
 
+    /* 2020.11.13 / 김학균
+    배송안내를 웹 뷰를 통해서 나타내려고 했지만, 메인사이트는 들어가지는데
+    배송안내가 포함된 다른 url은 오류로 인해서 들어가지지가 않아짐.
+    방법을 찾는중
+     */
+
     val weburl = "http://bannermall.co.kr/board/free/list.html?board_no=1"
     val TAG = "QuikSilver Activity"
 

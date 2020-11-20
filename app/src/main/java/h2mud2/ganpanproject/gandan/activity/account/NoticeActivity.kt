@@ -20,6 +20,10 @@ import org.jsoup.select.Elements
 
 class NoticeActivity : AppCompatActivity() {
 
+    /* 2020.11.12 / 김학균
+    웹크롤링을 통해 공지사항의 제목과 내용을 받아왔음
+     */
+
     val weburl = "http://bannermall.co.kr/board/free/read.html?"
     val TAG = "Notice Activity"
 

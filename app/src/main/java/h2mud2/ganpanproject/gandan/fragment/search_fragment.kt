@@ -60,6 +60,13 @@ class search_fragment: Fragment() {
             "steelitem"
         )
 
+        /* 2020.11.07 / 김학균
+        웹 크롤링을 통해 파이어스토어에 넣어놓은 상품 이름, 가격, 이미지 중 상품 이름만 가져오도록 함.
+        사용자가 검색버튼을 누르게 된다면 전체 상품 이름중에 검색한 내용이 포함되어있는지 확인하고
+        포함되어있으면 리스트에 저장한 후 리사이클러뷰로 나타내도록 함
+        - 추가적으로 구현 필요
+         */
+
         val scope = CoroutineScope(Dispatchers.Default)
 
         scope.launch {

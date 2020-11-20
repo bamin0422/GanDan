@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import h2mud2.ganpanproject.gandan.R
 import h2mud2.ganpanproject.gandan.model.NoticeItem
 
-
+    /* 2020.11.12 / 김학균
+    공지사항을 리사이클러뷰로 나타내기 위한 어댑터
+     */
 class NoticeAdapter(val items : MutableList<NoticeItem>, val context: Context) : RecyclerView.Adapter<NoticeAdapter.ViewHolder>(){
 
     interface ItemClickListener {

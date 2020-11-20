@@ -7,6 +7,10 @@ import h2mud2.ganpanproject.gandan.R
 
 class NoticeDetailActivity : AppCompatActivity() {
 
+    /* 2020.11.12 / 김학균
+    공지사항의 제목을 클릭하게 되면 자세한 내용을 담고 있는 Activity로 전환
+     */
+
     val weburl = "http://bannermall.co.kr/board/free/read.html?"
     val TAG = "Notice Activity"
 
