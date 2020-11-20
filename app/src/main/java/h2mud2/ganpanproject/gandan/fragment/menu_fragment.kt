@@ -25,6 +25,9 @@ import kotlinx.android.synthetic.main.menu_fragment.view.*
 
 class menu_fragment: Fragment() {
 
+    /* 2020.09.24 / 민대인
+    menu_fragment에서 RecyclerView를 통해 아이템들의 종류를 보여줌.
+     */
 
     var menus = arrayListOf<Banner>(
         Banner("배너", "banner"),
