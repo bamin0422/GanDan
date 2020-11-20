@@ -12,11 +12,11 @@ import com.bumptech.glide.Glide
 import h2mud2.ganpanproject.gandan.R
 import h2mud2.ganpanproject.gandan.model.Item
 
-class GridAdapter(val context: Context, val itemList : ArrayList<Item>) : Adapter<GridAdapter.Holder>(){
+class GridAdapter(val context: Context, val itemList : ArrayList<Item>, val itemClick : (Item) -> Unit) : Adapter<GridAdapter.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.grid_items, parent, false)
-        return Holder(view)
+        return Holder(view, itemClick)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -25,7 +25,7 @@ class GridAdapter(val context: Context, val itemList : ArrayList<Item>) : Adapte
 
     override fun getItemCount() = itemList.size
 
-    inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+    inner class Holder(itemView: View?, itemClick: (Item) -> Unit) : RecyclerView.ViewHolder(itemView!!) {
         val itemImg = itemView?.findViewById<ImageView>(R.id.item_img)
         val itemName = itemView?.findViewById<TextView>(R.id.item_name)
         val itemPrice = itemView?.findViewById<TextView>(R.id.item_price)
@@ -34,6 +34,7 @@ class GridAdapter(val context: Context, val itemList : ArrayList<Item>) : Adapte
             itemImg?.let { Glide.with(context).load("http://"+item.imgURL).into(it) }
             itemName?.text = item.name
             itemPrice?.text = item.price+"원"
+            itemView.setOnClickListener{ itemClick(item) }
         }
     }
 

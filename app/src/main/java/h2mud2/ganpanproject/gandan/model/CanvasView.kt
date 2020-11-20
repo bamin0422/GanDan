@@ -1,20 +1,20 @@
 package h2mud2.ganpanproject.gandan.model
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Build
+import android.graphics.Path
 import android.util.AttributeSet
-import android.view.FrameMetrics
 import android.view.MotionEvent
 import android.view.View
-import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
+import java.util.ArrayList
 
-public class CanvasView : View {
+public class CanvasView : ConstraintLayout {
 
-    var paint = Paint()
+    lateinit var pathInfo : PathInfo
+    var data = ArrayList<PathInfo>()
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -22,44 +22,62 @@ public class CanvasView : View {
         attrs,
         defStyleAttr
     )
-    var startX = -1
-        var startY = -1
-        var stopX = -1
-        var stopY = -1
+    var check = 0
+    fun setPathInfo(color: Int, r: Float){
+        check = 2
+        var paint = Paint()
+        paint.setColor(color)
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = r
+        pathInfo = PathInfo()
+        pathInfo.setPaint(paint)
+    }
 
-        @SuppressLint("WrongCall")
-        override fun onTouchEvent(event: MotionEvent?): Boolean {
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> { //touch 시작, 화면에 손가락 올림.
-                    startX = event.x.toInt()
-                    startY = event.y.toInt()
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    // 화면에서 이동할 때, 화면에서 손가락을 띄였을 때.
-                    stopX = event.x.toInt()
-                    stopY = event.y.toInt()
-                    this.invalidate() // 명령 완료, 그리기 호출.
-                }
 
-                // move랑 up을 나눠서 처리하는 이유는, 도형의 잔상이 남지 않도록 하기 위해서.
-
-                MotionEvent.ACTION_UP -> {
-                    this.invalidate()
-                }
-
-            }
-
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        if(check == 0){
             return true
         }
-    fun setPaint(color: Int) {
-        paint.setColor(color)
+        else if(check == 1){
+            return true
+        }
+        else {
+            pathInfo.setPaintStyle(Paint.Style.STROKE)
+            when(event?.action){
+                MotionEvent.ACTION_DOWN -> pathInfo.moveTo(event.x, event.y)
+                MotionEvent.ACTION_MOVE -> pathInfo.lineTo(event.x, event.y)
+                MotionEvent.ACTION_UP -> {
+                    data.add(pathInfo)
+                    invalidate()
+                    return true
+                }
+            }
+            data.add(pathInfo)
+            invalidate()
+            return true
+        }
     }
 
-    fun setThickness(thickness: Int) {
-        paint.strokeWidth = thickness.toFloat()
-    }
-
-    override fun onDraw(canvas: Canvas?) {
+    override public fun onDraw(canvas: Canvas?) {
+        for(p in data){
+            canvas?.drawPath(p, p.getPaint())
+        }
         super.onDraw(canvas)
+    }
+}
+
+public class PathInfo : Path() {
+    private lateinit var paint : Paint
+    init {
+        paint = Paint()
+    }
+    fun setPaint(paint : Paint){
+        this.paint = paint
+    }
+    fun setPaintStyle(paint : Paint.Style ){
+        this.paint.style = paint
+    }
+    fun getPaint() : Paint{
+        return this.paint
     }
 }
