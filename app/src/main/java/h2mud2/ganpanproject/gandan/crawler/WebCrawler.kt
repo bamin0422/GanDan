@@ -9,6 +9,10 @@ import org.jetbrains.anko.doAsync
 import org.jsoup.Jsoup
 
 class WebCrawler{
+    
+    /* 2020.11.04 / 민대인
+    Jsoup라이브러리를 사용해, bannermall에서 coroutine을 사용해 웹 크롤링 해옴.
+     */
 
     fun bestItemCrawler() {
         CoroutineScope(Dispatchers.IO).launch {
