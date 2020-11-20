@@ -12,6 +12,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import h2mud2.ganpanproject.gandan.R
 
 class TextControllWidget : ConstraintLayout {
+    
+    /* 2020.11.04 / 민대인
+    DesignTool의 Text 커스텀 위젯으로 만드려 했으나 
+     */
 
     lateinit var textView: TextView
     lateinit var deleteBtn: Button
