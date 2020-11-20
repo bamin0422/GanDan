@@ -20,6 +20,11 @@ import h2mud2.ganpanproject.gandan.model.Item
 import kotlinx.coroutines.*
 
 class DesignItemActivity : AppCompatActivity(){
+    
+    
+    /* 2020.09.28 / 민대인
+    디자인아이템을 웹사이트에서 크롤링해서 가져옴. 
+     */
 
     lateinit var backBtn: Button
     lateinit var designItemRecyclerView : RecyclerView
