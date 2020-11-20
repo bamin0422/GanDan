@@ -7,6 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import h2mud2.ganpanproject.gandan.R
 
 class SplashActivity: AppCompatActivity() {
+    
+    /* 2020.10.28 / 민대인
+    간단 인트로
+     */
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.intro)
